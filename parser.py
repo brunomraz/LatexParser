@@ -73,10 +73,10 @@ class Equation(Units):
 
         self.result, self.wolfram_eq = Equation.calculate_result(eq, self.vars, num_of_decimals=self.precision)
 
-        description_print = self.symbol + "[" + self.unit + "] - " + " \\text{" + self.description + "}\\newline"
-        symbolic_eq_print = self.symbol + "=" + self.symbolic_eq + "\\newline"
-        value_eq_print = self.symbol + "=" + self.value_eq + "\\newline"
-        value_unit_eq_print = self.symbol + "=" + self.value_unit_eq + "\\newline"
+        description_print = self.symbol + "[" + self.unit + "] - " + " \\text{" + self.description + "}"
+        symbolic_eq_print = self.symbol + "=" + self.symbolic_eq
+        value_eq_print = self.symbol + "=" + self.value_eq
+        value_unit_eq_print = self.symbol + "=" + self.value_unit_eq
         result_print = self.symbol + "=" + str(self.result) + self.unit
 
         if Equation.print_description:
@@ -101,7 +101,7 @@ class Equation(Units):
     def output_equation(eq, latex):
         if latex:
             #pass
-            display(Latex(eq + "\\\\[10pt]"))
+            display(Latex(eq + "\\newline\\\\[10pt]"))
         else:
             print(eq)
 
