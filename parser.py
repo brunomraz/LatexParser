@@ -1,4 +1,3 @@
-from dis import dis
 import re
 import sympy
 from IPython.display import display, Latex
@@ -9,6 +8,8 @@ import math
 #TODO add deg or rad calculation in trigonometry funcs- it is up to the user to modify equation for deg or rad, rad is the default setting
 #TODO add inline or multiline substitution
 #TODO add calculation or procedure eq
+#TODO convert all functions to camel letter
+
 
 class Units:
     units_dict = {"MPa": "\\text{MPa}",
@@ -120,7 +121,7 @@ class Equation(Units):
         while match != None:
             if match.group(0) in vars:
                 if vars[match.group(0)][1] == "°":
-                    value = str(vars[match.group(0)][0] * math.pi / 180)
+                    value = str(vars[match.group(0)][0]) # * math.pi / 180)
                 else:
                     value = str(vars[match.group(0)][0])
 
@@ -139,9 +140,11 @@ class Equation(Units):
             match = pattern.search(new_eq)
         for i in symbol_replacements:
             symbolic_eq = Equation.replace_string(symbolic_eq, i[2], i[0], i[1])
-        """ it will use symbolic_eq for calculation and symbolic_eq for printing. this is needed because once it might use
-        degrees for calculating trigonometry and other times it could use radians, the equation will only have an addition of
-        * pi /180 if degrees are used"""
+
+        """ it will use wolfram_eq for calculation and symbolic_eq for printing. this is needed because once it might use
+        degrees for calculating trigonometry and other times it could use radians, the wolfram equation will only have an addition of
+        * pi /180 if degrees are used, wolfram_eq also used when substituting constants"""
+
         wolfram_eq = symbolic_eq
         decimal_match = r"\d+\.?\d*"
         pattern = re.compile(decimal_match)
@@ -603,42 +606,10 @@ class Variables(Units):
 
 
 
-# vars = Variables(["mu_steel", 0.1, "", "Steel coefficient of friction", "print"],
-#                  ["F_n", 100, "N/mm^2", "Normal force", "print"])
-# Equation.print_units = True
-# friction_eq = Equation("F_fr",
-#                        "(F_n+F_n*mu_steel*F_n+mu_steel*F_n)",
-#                        "N",
-#                        "Friction force",
-#                        3,
-#                        vars.variables)
-
-
-#vars = Variables({"μ_steel": [0.1, "", "Steel coefficient of friction", "print"],
-#                "F_n": [100, "N/mm2", "Normal force", "print"]})
-#print()
-#friction_eq = Equation("F_fr",
-#                      "a_11 + F_n + a_1 + F_n^μ_steel * (μ_steel / F_n * (1 / 2)^2) * F_n + μ_steel * F_n",
-#                     "N",
-#                    "Friction force",
-#                   3, # number of decimals
-#                  vars.variables
-#                 )
-
-# eq = "sin(a)^b^sin(c)+sin(a+1)^(1+2)^sin(4)+sin(a+1)^sin(1)+1^(2+2)^sin(5+6)^78^2"
-#
-# eq = "sin(a)^(b^sin(c))^sin(5)"
-#
-# print(eq)
-# Equation("a",
-#          eq,
-#          "",
-#          "description")
 
 Variables.print_latex = False
 Equation.print_units = True
 Equation.print_latex = False
-Equation.print_raw_substituted_equation = True
 Equation.print_wolframalpha_input = False
 Equation.substitute_constant_values = True
 
@@ -652,5 +623,3 @@ friction_eq = Equation("F_fr", # symbol
                        4, # number of decimals
                        vars.variables # input variables
                        )
-
-# convert all functions to camel letter
