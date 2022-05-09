@@ -1,3 +1,4 @@
+from dis import dis
 import re
 import sympy
 from IPython.display import display, Latex
@@ -101,7 +102,9 @@ class Equation(Units):
     def output_equation(eq, latex):
         if latex:
             #pass
-            display(Latex(eq + "\\newline\\\\[10pt]"))
+            display_eq = eq
+            display_eq = display_eq.replace("\\frac", "\\dfrac")
+            display(Latex(display_eq + "\\newline\\\\[10pt]"))
         else:
             print(eq)
 
@@ -464,7 +467,7 @@ class Equation(Units):
                 value_unit_offset += match.start() + len(str(vars[match.group(0)][0]) + vars[match.group(0)][1])
 
             elif match.group(0) in Equation.constants.keys():
-                print(f"constants matched {match.group(0)}")
+                #print(f"constants matched {match.group(0)}")
                 if replace_constants:
                     index = 0
                 else:
