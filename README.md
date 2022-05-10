@@ -3,13 +3,13 @@
 Converts Excel like equations to Latex with posibility of substitution, etc. for easy implementation to Word reports.
 
 ## Supported and tested mathematical functions:
-ln- logarithm with base e
-log- logarithm with base e
-trigonometry functions that use radians
- -sin
- -cos
- -tan
-Abs- absolute value of expression
+- ln- logarithm with base e
+- log- logarithm with base e
+- trigonometry functions that use radians
+    - sin
+    - cos
+    - tan
+- Abs- absolute value of expression
 
 ## Constants, currently reserved variables
 - e- 2.72...
@@ -27,3 +27,6 @@ String after underline goes to subscript, e.g.
 - Equation.print_latex = True/False
 - Equation.print_wolframalpha_input = True/False
 - Equation.substitute_constant_values = True/False
+
+## Other worthy mentions
+- [handcalcs](https://github.com/connorferster/handcalcs) - also enables easy conversion from Python equations to Latex, however, less control and Latex display doesn't work in Google Colaboratory
