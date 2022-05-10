@@ -93,7 +93,7 @@ class Equation(Units):
         Equation.output_equation(result_print, Equation.print_latex)
         if Equation.print_latex:
             #pass
-            display(Latex("\\newline"))
+            display(Latex("$\\newline$"))
         else:
             print()
         if Equation.print_wolframalpha_input:
@@ -105,7 +105,7 @@ class Equation(Units):
             #pass
             display_eq = eq
             display_eq = display_eq.replace("\\frac", "\\dfrac")
-            display(Latex(display_eq + "\\newline\\\\[10pt]"))
+            display(Latex("$" + display_eq + "\\newline\\\\[10pt]" + "$"))
         else:
             print(eq)
 
@@ -591,7 +591,7 @@ class Variables(Units):
             self.variables[var[0]] = [var[1], Units.units_dict[var[2]], var[3], var[4]]
         if Variables.print_latex:
             #pass
-            display(Latex("\\newline"))
+            display(Latex("$\\newline$"))
         else:
             print()
 
@@ -602,7 +602,7 @@ class Variables(Units):
 
             display_eq = eq
             display_eq = display_eq.replace("\\frac", "\\dfrac")
-            display(Latex(display_eq + "\\\\[10pt]"))
+            display(Latex("$" + display_eq + "\\\\[10pt]" + "$"))
         else:
             print(eq)
 
