@@ -13,14 +13,14 @@ import math
 
 class Units:
     units_dict = {"MPa": "\\text{MPa}",
-             "N/mm^2":"\\dfrac{\\text{N}}{\\text{mm}^2}",
+             "N/mm^2":"\\frac{\\text{N}}{\\text{mm}^2}",
              "N": "\\text{N}",
              "deg": "°",
              "rad": "\\text{rad}",
              "Nm": "\\text{Nm}",
              "kg": "\\text{kg}",
-             "m/s^2": "\\dfrac{\\text{m}}{\\text{s}^2}",
-             "m/s": "\\dfrac{\\text{m}}{\\text{s}}",
+             "m/s^2": "\\frac{\\text{m}}{\\text{s}^2}",
+             "m/s": "\\frac{\\text{m}}{\\text{s}}",
              "": "" # no unit
              }
     def __init__(self, unit):
