@@ -417,8 +417,8 @@ class Equation(Units):
             start_search_index = 0
             func_index = eq.find(function, start_search_index)
             while func_index != -1:
-                new_eq = Equation.replace_string(new_eq, f"\\{function}", func_index, func_index + len(function))
-                start_search_index = func_index + 1 + len(function)
+                new_eq = Equation.replace_string(new_eq, f"\\text{{{function}}}", func_index, func_index + len(function))
+                start_search_index = func_index + 1 + len(f"\\text{{{function}}}")
                 func_index = new_eq.find(function, start_search_index)
         return new_eq
 
@@ -612,7 +612,7 @@ class Variables(Units):
 
 Variables.print_latex = False
 Equation.print_units = True
-Equation.print_latex = False
+Equation.print_latex = True
 Equation.print_wolframalpha_input = False
 Equation.substitute_constant_values = True
 
@@ -620,7 +620,7 @@ vars = Variables(["μ_steel", 0.1, "", "Steel coefficient of friction", "print"]
                  ["F_n", 100, "N/mm^2", "Normal force", "print"])
 print()
 friction_eq = Equation("F_fr", # symbol
-                       "π+F_n + abs(e) + ln(5) + pi + F_n^μ_steel * (μ_steel / F_n * (1 /3/2*sqrt(4/5*6))^2) * F_n + μ_steel * F_n", # equation
+                       "π+F_n + Abs(e) + ln(5) + pi + F_n^μ_steel * (μ_steel / F_n * (1 /3/2*sqrt(4/5*6))^2) * F_n + μ_steel * F_n", # equation
                        "N", # unit
                        "Friction force", # description
                        4, # number of decimals
