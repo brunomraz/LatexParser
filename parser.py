@@ -21,7 +21,11 @@ class Units:
              "kg": "\\text{kg}",
              "m/s^2": "\\dfrac{\\text{m}}{\\text{s}^2}",
              "m/s": "\\dfrac{\\text{m}}{\\text{s}}",
-             "": "" # no unit
+             "": "", # no unit
+             "mm": "\\text{mm}",
+             "Nmm": "\\text{Nmm}",
+             "MPa": "\\text{MPa}",
+             "GPa": "\\text{GPa}"
              }
     def __init__(self, unit):
         self.unit = Units.units_dict[unit]
